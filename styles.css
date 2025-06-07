@@ -1,0 +1,310 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    background: #fff;
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #fff;
+}
+
+.video-container.zoom {
+    transform: scale(1.2) translateX(-15%);
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -webkit-backface-visibility: hidden;
+    -ms-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.entry-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.entry-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#startButton {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+}
+
+#startButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+#startButton:hover::before {
+    left: 100%;
+}
+
+#startButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.text-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease;
+}
+
+.text-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.text-reveal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text-overlay.visible .text-reveal {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.text-line {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8vw;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.text-overlay.visible .text-line {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.text-overlay.visible .text-line:nth-child(1) { transition-delay: 0.2s; }
+.text-overlay.visible .text-line:nth-child(2) { transition-delay: 0.3s; }
+.text-overlay.visible .text-line:nth-child(3) { transition-delay: 0.4s; }
+.text-overlay.visible .text-line:nth-child(4) { transition-delay: 0.5s; }
+.text-overlay.visible .text-line:nth-child(5) { transition-delay: 0.6s; }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.05);
+    }
+}
+
+.text-overlay.visible .text-reveal {
+    animation: float 3s ease-in-out infinite;
+}
+
+.glitch-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10vw;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                 0 0 20px rgba(255, 255, 255, 0.5),
+                 0 0 30px rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.2em;
+    transform: translateY(50px) scale(0.5);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.text-overlay.visible .glitch-text {
+    transform: translateY(0) scale(1);
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch-text::before {
+    animation: glitch-1 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    color: #0ff;
+    z-index: -1;
+}
+
+.glitch-text::after {
+    animation: glitch-2 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+    color: #f0f;
+    z-index: -2;
+}
+
+@keyframes glitch-1 {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch-2 {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(2px, -2px);
+    }
+    40% {
+        transform: translate(2px, 2px);
+    }
+    60% {
+        transform: translate(-2px, -2px);
+    }
+    80% {
+        transform: translate(-2px, 2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.loading-content p {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+.loading-progress {
+    font-family: 'Orbitron', sans-serif;
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #333;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 
