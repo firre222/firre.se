@@ -22,7 +22,10 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    transform: translate3d(0, 0, 0);
     transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 video {
@@ -35,11 +38,13 @@ video {
     left: 50%;
     transform: translate(-50%, -50%);
     object-fit: cover;
-    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .video-container.zoom {
-    transform: scale(1.2) translateX(-15%);
+    transform: translate3d(-15%, 0, 0) scale(1.2);
     transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
