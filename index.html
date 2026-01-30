@@ -1,30 +1,161 @@
-<!doctype html>
-<html lang="sv">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Omdirigerar…</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Firre.se</title>
 
-  <!-- Meta-refresh som fallback -->
-  <meta http-equiv="refresh" content="0; url=https://guns.lol/mfaka">
+<style>
+/* BASE */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0e8d9;
+  text-align: center;
+  scroll-behavior: smooth;
+  color: #111;
+}
 
-  <!-- Valfritt: gör sidan snabbare att ladda och bra för UX -->
-  <style>
-    html,body{height:100%;margin:0;font-family:sans-serif;display:flex;align-items:center;justify-content:center;background:#f7f7f9;color:#333}
-    .box{max-width:520px;text-align:center;padding:24px;border-radius:8px}
-    a{color:#1a73e8;text-decoration:none}
-  </style>
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  background-color: #f7eedc;
+  padding: 15px 0;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
 
-  <script>
-    // JavaScript-redirect (använd replace så att användaren inte kan gå "back" till denna sida)
-    window.location.replace("https://guns.lol/mfaka");
-  </script>
+nav a {
+  color: #111;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+nav a:hover {
+  background: #e6dcc7;
+  border-radius: 8px;
+}
+
+/* CONTAINER */
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 120px auto 80px;
+  border-radius: 20px;
+  background-color: #f7eedc;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.header { position: relative; width: 100%; height: 50vh; display: flex; justify-content: center; align-items: center; overflow: hidden; } @font-face { font-family: "font1"; src: url( googlefonts.github.io/ebgaramond-specimen/) format("truetype"); } .header-text { font-family: "font1"; font-size: 12vw; font-weight: bold; color: #111; position: absolute; z-index: 1; text-transform: uppercase; opacity: 1; } .header-image { position: absolute; bottom: -10px; width: 50%; border-radius: 20px; z-index: 10; }
+
+
+/* SECTIONS */
+.section {
+  padding: 100px 40px;
+}
+
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #4a2e0d;
+}
+
+.section p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 15px;
+  line-height: 1.6;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: #b45309;
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(180,83,9,0.4);
+}
+
+/* FOOTER */
+.footer {
+  padding: 40px;
+  font-size: 0.9rem;
+  color: #555;
+}
+</style>
 </head>
+
 <body>
-  <div class="box">
-    <h1>Omdirigerar…</h1>
-    <p>Om du inte dirigeras automatiskt, klicka här:</p>
-    <p><a href="https://guns.lol/mfaka">https://guns.lol/mfaka</a></p>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="products.html">Shop</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- HERO -->
+  <div class="header">
+    <div class="header-text">Firre.se</div>
+    <img
+      src="https://media4.giphy.com/media/1gomR3FaeYwEq38qfI/giphy.gif"
+      alt="Hero Image"
+      class="header-image"
+    />
   </div>
+
+  <!-- ABOUT / INTRO -->
+  <div class="section">
+    <h2>Digital Products & Accounts</h2>
+    <p>
+      Welcome to Firre.se.  
+      Here you can find Robux and various digital accounts.
+    </p>
+    <p>
+      All purchases are handled through Discord tickets for safety and support.
+    </p>
+
+    <a href="products.html" class="btn">Go to Shop</a>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:contact@firre.se">contact@firre.se</a></p>
+    <p>
+      Discord:
+      <a href="https://discord.gg/g2yPAZSrNj" target="_blank">
+        discord.gg/g2yPAZSrNj
+      </a>
+    </p>
+  </div>
+
+</div>
+
+<div class="footer">
+  © 2026 Firre.se — All rights reserved
+</div>
+
+
 </body>
 </html>

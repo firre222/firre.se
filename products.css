@@ -1,0 +1,92 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f0e8d9;
+  margin: 0;
+  padding: 100px 20px 40px;
+  color: #111;
+  text-align: center;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #f7eedc;
+  padding: 15px 0;
+  z-index: 1000;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* ROBUX */
+#robux-section {
+  margin: 40px 0 80px;
+}
+
+#robux-header {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #4a2e0d;
+}
+
+#robux-amount {
+  font-size: 6rem;
+  font-weight: 900;
+  color: #b45309;
+}
+
+/* OTHERS */
+#others-section {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#others-section h2 {
+  font-size: 2rem;
+  border-bottom: 3px solid #b45309;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.other-item {
+  background: #f7eedc;
+  border-radius: 14px;
+  padding: 15px 20px;
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.other-item .name {
+  font-weight: 700;
+}
+
+.other-item .price {
+  font-weight: 700;
+  color: #b45309;
+}
+
+.other-item .status {
+  font-style: italic;
+  color: #777;
+}
+
+/* HOW TO BUY */
+#how-to-buy {
+  background: #fff7e1;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 40px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(180,83,9,0.3);
+}

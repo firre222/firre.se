@@ -1,0 +1,15 @@
+{
+  "robux": 1234,
+  "others": [
+    {
+      "name": "Xbox123",
+      "price": "$15",
+      "available": true
+    },
+    {
+      "name": "PlayStationX",
+      "price": "$18",
+      "available": false
+    }
+  ]
+}
